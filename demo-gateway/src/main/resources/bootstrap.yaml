@@ -1,0 +1,30 @@
+# Tomcat
+server:
+  port: 9999
+
+# Spring
+spring:
+  application:
+    # 应用名称
+    name: spring-cloud-fxdemo-gateway
+  profiles:
+    # 环境配置
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: 192.168.20.203:8848
+        #dev1
+        namespace: 3dbfe0ad-152e-4e58-af3f-9666e4aec73b
+        # dev2
+      #        namespace: 519138e4-ce8b-4434-ac56-1273aabc20f3
+      config:
+        # 配置中心地址
+        server-addr: 192.168.20.203:8848
+        # 配置文件格式
+        file-extension: yaml
+        # 共享配置
+        shared-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
